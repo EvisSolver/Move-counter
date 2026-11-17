@@ -3,17 +3,18 @@ import cv2
 
 Params = {
     "width": 640,
-    "height": 480
+    "height": 360
 } # -- X, Y
 
-fps = 24
-video_duration = 10
+fps = 25
+video_duration = 16
 
 codec = cv2.VideoWriter_fourcc(*'mp4v')
 out_video = cv2.VideoWriter('test.mp4', codec, fps, (Params['width'], Params['height']))
 
 total_frames = video_duration * fps
 
+line_x = Params["width"]//2
 
 # --- BLUE BALL ---
 blue_ball_x = 100
