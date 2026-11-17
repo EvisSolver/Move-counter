@@ -45,9 +45,9 @@ red_ball_x_speed_radius = 20
 # --- BALLS COLORS ---
 Colors = np.array(
     [
-        [255,0,0] # -- Blue
+        [255,0,0], # -- Blue
         [0,255,0], # -- Green
-        [0,0,255], # -- Red
+        [0,0,255] # -- Red
     ]
 )
 
