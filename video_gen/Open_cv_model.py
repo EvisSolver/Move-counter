@@ -26,3 +26,5 @@ for frame_idx in range(total_frames):
         (40, 40, 40), dtype = np.uint8
     )
     for ball_name in Balls: move_ball(ball_name, frame)
+    out_video.write(frame)
+out_video.release()
