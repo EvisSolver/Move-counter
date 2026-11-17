@@ -1,3 +1,4 @@
+import numpy as np
 import cv2
 
 Params = {
@@ -13,4 +14,25 @@ out_video = cv2.VideoWriter('test.mp4', codec, fps, (Params['width'], Params['he
 
 total_frames = video_duration * fps
 
+x = 100
+y = 100
 
+x_speed = 15
+y_speed = 10
+
+radius = 30
+
+Colors = np.array(
+    [
+        [0,0,255],
+        [0,255,0],
+        [255,0,0]
+    ]
+)
+
+
+Balls = [
+    {
+        "blue_ball": {}
+    }
+]
