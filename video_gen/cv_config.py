@@ -14,13 +14,34 @@ out_video = cv2.VideoWriter('test.mp4', codec, fps, (Params['width'], Params['he
 
 total_frames = video_duration * fps
 
-x = 100
-y = 100
 
-x_speed = 15
-y_speed = 10
+# --- BLUE BALL ---
+blue_ball_x = 100
+blue_ball_y = 100
 
-radius = 30
+blue_ball_x_speed = 15
+blue_ball_y_speed = 10
+
+blue_ball_x_speed_radius = 30
+
+# --- GREEN BALL ---
+green_ball_x = 100
+green_ball_y = 100
+
+green_ball_x_speed = 15
+green_ball_y_speed = 10
+
+green_ball_x_speed_radius = 30
+
+# --- RED BALL ---
+red_ball_x = 100
+red_ball_y = 100
+
+red_ball_x_speed = 15
+red_ball_y_speed = 10
+
+red_ball_x_speed_radius = 30
+
 
 Colors = np.array(
     [
@@ -33,6 +54,8 @@ Colors = np.array(
 
 Balls = [
     {
-        "blue_ball": {}
+        "blue_ball": {"x": blue_ball_x, "y": blue_ball_y, "x_speed": blue_ball_x_speed, "y_speed": blue_ball_y_speed, "radius": blue_ball_x_speed_radius, "color": Colors[0]},
+        "green_ball": {"x": green_ball_x, "y": green_ball_y, "x_speed": green_ball_x_speed, "y_speed": green_ball_y_speed, "radius": green_ball_x_speed_radius, "color": Colors[1]},
+        "red_ball": {"x": red_ball_x, "y": red_ball_y, "x_speed": red_ball_x_speed, "y_speed": red_ball_y_speed, "radius": red_ball_x_speed_radius, "color": Colors[2]}
     }
 ]
