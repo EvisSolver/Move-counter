@@ -18,8 +18,8 @@ def move_ball(ball_name, frame):
     Balls[f"{ball_name}"]["y"] += Balls[f"{ball_name}"]["y_speed"]
 
     cv2.circle(frame, (ball["x"], ball["y"]), ball["radius"], ball["color"], -1)
-    cv2.line(frame, (line_x, 0), (line_x, Params["height"]), (255,255,255), 1)
 
+out_video = cv2.VideoWriter('test.mp4', codec, fps, (Params["width"], Params["height"]))
 for frame_idx in range(total_frames):
     frame = np.full(
         (
@@ -29,6 +29,7 @@ for frame_idx in range(total_frames):
         ), 
         (40, 40, 40), dtype = np.uint8
     )
+    cv2.line(frame, (line_x, 0), (line_x, Params["height"]), (255,255,255), 1)
     for ball_name in Balls: move_ball(ball_name, frame)
     out_video.write(frame)
 out_video.release()

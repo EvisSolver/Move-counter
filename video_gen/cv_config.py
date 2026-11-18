@@ -10,7 +10,6 @@ fps = 25
 video_duration = 16
 
 codec = cv2.VideoWriter_fourcc(*'mp4v')
-out_video = cv2.VideoWriter('test.mp4', codec, fps, (Params['width'], Params['height']))
 
 total_frames = video_duration * fps
 
