@@ -15,7 +15,6 @@ print(fps, w, h, n_frames)
 
 def get_data(n_frames):
     percent_steps = {}
-
     mile_stones = {
         0: 0,
         int(n_frames * 0.25): 25,
