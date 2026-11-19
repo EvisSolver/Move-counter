@@ -31,6 +31,7 @@ def get_data(n_frames):
     count_1, count_2, count_3 = int(),int(),int()
 
     tracks = {}
+    disappeared = {}
     next_id = int()
 
     for i in range(n_frames):
@@ -39,7 +40,7 @@ def get_data(n_frames):
         clean_mask = clear_noise(mask)
         objects = find_contours(clean_mask)
 
-        tracks, next_id = update_tracks(tracks, objects, next_id)
+        tracks, next_id, disappeared = update_tracks(tracks, objects, next_id, disappeared)
         print(tracks)
 
         n_object = len(objects)
