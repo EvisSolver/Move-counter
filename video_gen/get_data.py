@@ -2,6 +2,7 @@ import os, time
 from cv_config import *
 from bg_detector import bg_detect
 from clear_noise import clear_noise
+from findContours import find_contours
 
 # --- VIDEO ---
 cap = cv2.VideoCapture("test.mp4")
@@ -26,10 +27,17 @@ def get_data(n_frames):
     start = time.perf_counter()
 
     bg_subtractor_MOG2 = bg_detect()
+    count_1, count_2, count_3 = int(),int(),int()
     for i in range(n_frames):
         ret, frame = cap.read()
         mask = bg_subtractor_MOG2.apply(frame)
         clean_mask = clear_noise(mask)
+        objects = find_contours(clean_mask)
+
+        n_object = len(objects)
+        if n_object == 1: count_1 += 1
+        if n_object == 2: count_2 += 1
+        if n_object == 3: count_3 += 1
 
         if i in [50, 100, 150, 200, 250, 300, 350]:
             os.makedirs("for_mask", exist_ok = True)
@@ -44,5 +52,10 @@ def get_data(n_frames):
     read_fps = n_frames / elapsed
     print(f"FPS read: {read_fps:.2f}")
     print(elapsed)
+    print(f'''
+count_1: {count_1}
+count_2: {count_2}
+count_3: {count_3}
+''')
 get_data(n_frames)
 cap.release()
