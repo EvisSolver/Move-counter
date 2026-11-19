@@ -1,2 +1,6 @@
 import cv2
-bg_subtractor_MOG2 = cv2.createBackgroundSubtractorMOG2(detectShadows = False)
+
+def bg_detect(frame):
+    bg_subtractor_MOG2 = cv2.createBackgroundSubtractorMOG2(detectShadows = False)
+    mask = bg_subtractor_MOG2.apply(frame)
+    return mask

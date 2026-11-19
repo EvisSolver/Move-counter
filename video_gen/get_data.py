@@ -24,12 +24,12 @@ def get_data(n_frames):
 
     cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
     start = time.perf_counter()
-    bg_subtractor_MOG2 = cv2.createBackgroundSubtractorMOG2(detectShadows = False)
+    
     for i in range(n_frames):
         ret, frame = cap.read()
         if i in [50, 100, 150, 200, 250, 300, 350]:
             os.makedirs("for_mask", exist_ok = True)
-            cv2.imwrite(f"for_mask/frame_{percent}pcs.png", frame)
+            cv2.imwrite(f"for_mask/frame_{i}pcs.png", frame)
         if i in mile_stones:
             if not ret: break
 
