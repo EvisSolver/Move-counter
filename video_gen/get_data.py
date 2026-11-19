@@ -3,6 +3,7 @@ from cv_config import *
 from bg_detector import bg_detect
 from clear_noise import clear_noise
 from findContours import find_contours
+from update_tracks import update_tracks
 
 # --- VIDEO ---
 cap = cv2.VideoCapture("test.mp4")
@@ -28,11 +29,18 @@ def get_data(n_frames):
 
     bg_subtractor_MOG2 = bg_detect()
     count_1, count_2, count_3 = int(),int(),int()
+
+    tracks = {}
+    next_id = int()
+
     for i in range(n_frames):
         ret, frame = cap.read()
         mask = bg_subtractor_MOG2.apply(frame)
         clean_mask = clear_noise(mask)
         objects = find_contours(clean_mask)
+
+        tracks, next_id = update_tracks(tracks, objects, next_id)
+        print(tracks)
 
         n_object = len(objects)
         if n_object == 1: count_1 += 1

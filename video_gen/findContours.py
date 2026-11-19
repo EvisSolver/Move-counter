@@ -1,7 +1,5 @@
 import cv2
 
-tracks = {}
-next_id = 0
 def find_contours(clean_mask):
     objects = []
     contours, _ = cv2.findContours(clean_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -10,11 +8,6 @@ def find_contours(clean_mask):
         x,y,w,h = cv2.boundingRect(cnt)
         cx = x + w // 2
         cy = y + h // 2
-        tracks = {
-            id:(cx, cy),
-            id:(cx, cy),
-            id:(cx, cy),
-            }
 
         objects.append((cx, cy))
-    return objects, tracks
+    return objects
