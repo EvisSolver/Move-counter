@@ -1,7 +1,7 @@
 import subprocess,time
 
 seconds = 0.01
-def coords_finder(seconds):
+def coords_finder(seconds): # -- Shows a monitor coords
     while True:
         coords = subprocess.run(
             [
